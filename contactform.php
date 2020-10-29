@@ -4,36 +4,46 @@
     $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
     $dotenv->load();
 
-    require PHPMailer/PHPMailer/PHPMailer;
+    use PHPMailer\PHPMailer\PHPMailer;
 
     $email_user = getenv['EMAIL_USER'];
     $email_password = getenv['EMAIL_PASSWORD'];
 
     if(isset($_POST['submit'])){
-        require 'PHPMailer/autoload.php';
+        $name = $_POST['name'];
+        $email = $_POST['email'];
+        $body = $_POST['body'];
+
+        require_once "phpmailer/src/PHPMailer.php";
+        require_once "phpmailer/src/SMTP.php";
+        require_once "phpmailer/src/Exception.php";
+
         $mail = new PHPMailer;
 
-        $mail->Host='smtp.gmail.com';
-        $mail->Port=587;
-        $mail->SMTPAuth=true;
-        $mail->SMTPSecure='tls';
-        $mail->Username=$email_user;
-        $mail->Password=$email_password;
-
-        $mail->setFrom($_POST['email'],$_POST['name']);
-        $mail->addAddress('contact@nicolanz.io');
-        $mail->addReplyTo($_POST['email'],$_POST['name']);
+        $mail->isSMTP();
+        $mail->Host = 'smtp.gmail.com';
+        $mail->SMTPAuth = true;
+        $mail->Username = $email_user;
+        $mail->Password = $email_password;
+        $mail->Port = 465;
+        $mail->SMTPSecure = 'ssl';
 
         $mail->isHTML(true);
-        $mail->Subject="Form Submission: ".$_POST['subject'];
-        $mail->Body='<h1 align=center>Name: '.$_POST['name'].'<br>Email: '.$_POST['email'].'<br>Message: '.$_POST['msg'].'</h1>';
+        $mail->setFrom($email, $name);
+        $mail->addAddress('contact@nicolanz.io');
+        $mail->Body = $body;
 
-        if(!$mail->send()){
-            header('Location: error.html');
+        if($mail->send()){
+            $status = "success";
+            $response = "Your message has been sent. We'll be in touch...";
         }
-        else{
-            header('Location: thanks.html');
+        else
+        {
+            $status = "failed";
+            $response = "Something went wrong: <br>".$mail->ErrorInfo;
         }
+
+        exit(json_decode(array("status" => $status, "response" => $response)));
     }
 
 ?>
