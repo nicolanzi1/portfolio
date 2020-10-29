@@ -29,10 +29,10 @@
         $mail->Body='<h1 align=center>Name: '.$_POST['name'].'<br>Email: '.$_POST['email'].'<br>Message: '.$_POST['msg'].'</h1>';
 
         if(!$mail->send()){
-            $result="Something went wrong. Please try again.";
+            header('Location: error.html');
         }
         else{
-            $result="Thanks ".$_POST['name'].", your message has been sent. We'll be in touch"; 
+            header('Location: thanks.html');
         }
     }
 
