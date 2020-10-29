@@ -1,3 +1,20 @@
+<?php
+
+if($_POST["submit"]) {
+    $recipient="nicolanzi@gmail.com";
+    $name=$_POST["name"];
+    $email=$_POST["email"];
+    $message=$_POST["message"];
+
+    $mailBody="Name: $name\nEmail: $email\n\n$message";
+
+    mail($recipient, $mailBody, "From: $name <$email>");
+
+    $thankYou="<p>Thank you! Your message has been sent.</p>";
+}
+
+?>
+
 <!DOCTYPE HTML>
 <!--
 	Dimension by HTML5 UP
@@ -13,6 +30,8 @@
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
 	</head>
 	<body class="is-preload">
+
+		<?=$thankYou ?>
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -121,7 +140,7 @@
 						<!-- Contact -->
 							<article id="contact">
 								<h2 class="major">Contact</h2>
-								<form method="post" action="contactform.php">
+								<form method="post" action="index.php">
 									<div class="fields">
 										<div class="field half">
 											<label for="name">Name</label>
