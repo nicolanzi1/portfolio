@@ -1,15 +1,39 @@
 <?php
-    if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $mailFrom = $_POST['mail'];
-        $message = $_POST['message'];
+    $result="";
 
-        $mailTo = "contact@nicolanz.io";
-        $headers = "From: ".$mailFrom;
-        $subject = "Contact form submission: $name";
-        $txt = "You have received an email from ".$name.".\n\n".$message;
+    $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
+    $dotenv->load();
 
-        mail($mailTo, $subject, $txt, $headers);
-        header("Location: thanks.html");
+    require PHPMailer/PHPMailer/PHPMailer;
+
+    $email_user = getenv['EMAIL_USER'];
+    $email_password = getenv['EMAIL_PASSWORD'];
+
+    if(isset($_POST['submit'])){
+        require 'PHPMailer/autoload.php';
+        $mail = new PHPMailer;
+
+        $mail->Host='smtp.gmail.com';
+        $mail->Port=587;
+        $mail->SMTPAuth=true;
+        $mail->SMTPSecure='tls';
+        $mail->Username=$email_user;
+        $mail->Password=$email_password;
+
+        $mail->setFrom($_POST['email'],$_POST['name']);
+        $mail->addAddress('contact@nicolanz.io');
+        $mail->addReplyTo($_POST['email'],$_POST['name']);
+
+        $mail->isHTML(true);
+        $mail->Subject="Form Submission: ".$_POST['subject'];
+        $mail->Body='<h1 align=center>Name: '.$_POST['name'].'<br>Email: '.$_POST['email'].'<br>Message: '.$_POST['msg'].'</h1>';
+
+        if(!$mail->send()){
+            $result="Something went wrong. Please try again.";
+        }
+        else{
+            $result="Thanks ".$_POST['name'].", your message has been sent. We'll be in touch"; 
+        }
     }
+
 ?>
