@@ -98,7 +98,7 @@
 								<h2 class="major">Skills</h2>
 								<p>These are some of the skills, languages and technologies I currently work with.</p> 
 								<span class="image main"><img src="images/skills.png" alt="" /></span>
-								<p>They include (but are not limited to): JavaScript, React, Redux, Flux, Jest, Mongoose, MongoDB, Node.js, Yarn, Express.js, Ruby, Ruby on Rails, RSpec, SQL, SQLite3, PostgreSQL, Webpack, jQuery, AJAX, Git, HTML5, CSS3, Sass, Bootstrap, Heroku, Google Firebase and AWS S3.</p>
+								<p>They include (but are not limited to): JavaScript, React, Redux, Flux, Jest, Mongoose, MongoDB, Node.js, Yarn, Express.js, Ruby, Ruby on Rails, RSpec, SQL, SQLite3, PostgreSQL, Webpack, jQuery, AJAX, Git, HTML5, CSS3, Sass, Bootstrap, Heroku, Google Firebase and AWS.</p>
 							</article>
 
 						<!-- Education -->
