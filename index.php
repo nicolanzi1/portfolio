@@ -410,38 +410,5 @@ print 'It took ' + i + ' iterations to sort the deck.';</code></pre>
 			<script src="assets/js/breakpoints.min.js"></script>
 			<script src="assets/js/util.js"></script>
 			<script src="assets/js/main.js"></script>
-			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-			<script type="text/javascript">
-				function sendEmail(){
-					const name = $("#name");
-					const email = $("#email");
-					const body = $("#body");
-
-					if (isNotEmpty(name) && isNotEmpty(email) && isNotEmpty(body)){
-						$.ajax({
-							url: 'contactform.php',
-							method: 'POST',
-							dataType: 'json',
-							data{
-								name: name.val(),
-								mail: email.val(),
-								body: body.val()
-							}, success: function(response){
-								$('')
-							}
-						})
-					}
-				}
-
-				function isNotEmpty(caller) {
-					if (caller.val() == "") {
-						caller.css('border', '1px solid red');
-						return false;
-					} else 
-						caller.css('border', "");
-
-					return true;
-				}
-			</script>
 	</body>
 </html>
