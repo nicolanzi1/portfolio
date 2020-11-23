@@ -42,6 +42,7 @@
 							<ul>
 								<li><a href="#about-me">About Me</a></li>
 								<li><a href="#projects">Projects</a></li>
+								<li><a href="#games">Games</a></li>
 								<li><a href="#skills">Skills</a></li>
 								<li><a href="#education">Education</a></li>
 								<li><a href="#contact">Contact</a></li>
@@ -101,6 +102,25 @@
 									<li>Utilized Object Relational Mapping (ORM) patterns to construct SQL queries via metaprogramming</li>
 									<li>Built an interface with sqlite3 to save changes to a database</li>
 								</ul>
+							</article>
+
+						<!-- Games -->
+							<article id="games">
+								<h2 class="major">Games</h2>
+								<span class="image main"><img src="/images/snake.png" alt="" /></span>
+								<h3>Snake | (JavaScript, jQuery)</h3>
+								<h4><a href='https://nicolanzi1.github.io/jquery_snake/'>Live</a> | <a href='https://github.com/nicolanzi1/jquery_snake'>GitHub</a></h4>
+								<p>A full-color 2000's classic Snake app built with JavaScript and jQuery.</p>
+
+								<span class="image main"><img src="images/minesweeper.png" alt="" /></span>
+								<h3>Minesweeper |  (React, JavaScript)</h3>
+								<h4><a href='https://nicolanzi1.github.io/react_minesweeper/'>Live</a> | <a href='https://github.com/nicolanzi1/react_minesweeper'>GitHub</a></h4>
+								<p>A full-color 90's PC classic Minesweeper app built with React and JavaScript.</p>
+
+								<span class="image main"><img src="images/tic-tac-toe.png" alt="" /></span>
+								<h3>Tic-Tac-Toe |  (JavaScript, jQuery)</h3>
+								<h4><a href='https://nicolanzi1.github.io/jquery_tic_tac_toe/'>Live</a> | <a href='https://github.com/nicolanzi1/jquery_tic_tac_toe'>GitHub</a></h4>
+								<p>Inspired by an all-times classic Tic-Tac-Toe app built in JavaScript and jQuery.</p>
 							</article>
 
 						<!-- Skills -->
